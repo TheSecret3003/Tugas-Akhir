@@ -1,25 +1,54 @@
 <?php
     include 'routing.php';
-    $sqlTrayek = "SELECT id_trayek,koridor,nama_trayek,warna FROM `rute`";
-    $resultTrayek = mysqli_query($db, $sqlTrayek);
-    $tableTrayek = array();
-    while ($row = $resultTrayek->fetch_assoc()) {
-        array_push($tableTrayek, $row);
-    }
-    $tableAll = array();
-    foreach($tableTrayek as $rowTrayek){
-        $sqlHalte = "SELECT id_halte,durasi,latitude,longitude FROM `terminal` WHERE id_trayek=" . $rowTrayek['id_trayek'] . ";";
-        $resultHalte = mysqli_query($db, $sqlHalte);
-        $tableHalte = array();    
-        // Masukin data ke table halte
-        while ($rowHalte = $resultHalte->fetch_assoc()) {
-            array_push($tableHalte, $rowHalte);
+    function distance($lat1, $lon1, $lat2, $lon2) {
+        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+          return 0;
         }
-        $tableAll[$rowTrayek['id_trayek']] = array("warna" => $rowTrayek['warna'],"koridor" => $rowTrayek['koridor'], "station" => $tableHalte); 
+        else {
+          $theta = $lon1 - $lon2;
+          $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+          $dist = acos($dist);
+          $dist = rad2deg($dist);
+          $miles = $dist * 60 * 1.1515;
+      
+          return ($miles * 1.609344);
+         
+        }
     }
-    $tableString = json_encode($tableAll);
+    $sql1= "SELECT latitude,longitude FROM `terminal` WHERE id_halte = 68";
+    $result1 = mysqli_query($db, $sql1);
+    $origin = $result1->fetch_assoc();
+
+    $sqlHalte= "SELECT id_halte,nama_terminal,durasi,latitude, longitude FROM `terminal`";
+    $resultHalte = mysqli_query($db, $sqlHalte);
+    $tableHalte = array();
+    while ($rowHalte = $resultHalte->fetch_assoc()) {
+        array_push($tableHalte, $rowHalte);
+    }
+    function searchNearestHalte($location) {
+        $halteOrigin = array("id_halte"=>$GLOBALS['tableHalte']['0']['id_halte'],"nama_terminal"=>$GLOBALS['tableHalte']['0']['nama_terminal'],
+        "durasi"=>$GLOBALS['tableHalte']['0']['durasi'],"latitude"=>$GLOBALS['tableHalte']['0']['latitude'],
+        "longitude"=>$GLOBALS['tableHalte']['0']['longitude'],
+        "distance"=>distance($location['latitude'], $location['longitude'], $GLOBALS['tableHalte']['0']['latitude'], $GLOBALS['tableHalte']['0']['latitude']));
+        foreach($GLOBALS['tableHalte'] as $rowHalte){
+            $dist = distance($location['latitude'], $location['longitude'], $rowHalte['latitude'], $rowHalte['longitude']);
+            if($dist < $halteOrigin["distance"]){
+                $halteOrigin["distance"] = $dist;
+                $halteOrigin["id_halte"] = $rowHalte["id_halte"];
+                $halteOrigin["nama_terminal"] = $rowHalte["nama_terminal"];
+                $halteOrigin["durasi"] = $rowHalte["durasi"];
+                $halteOrigin["latitude"] = $rowHalte["latitude"];
+                $halteOrigin["longitude"] = $rowHalte["longitude"];
+            } 
+        }
+        return $halteOrigin;
+    }
+    var_dump(searchNearestHalte($origin));
+    // var_dump($result1);
+    // var_dump($result2);
+    //echo distance($result1['latitude'], $result1['longitude'], $result2['latitude'], $result2['longitude']);
 ?>
-<!-- Insert HTML code here -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,45 +139,3 @@
             </div>
         </div>
     </div>
-
-    <div class="map-big">        
-        <div id="map"></div>
-            <script>
-            var map;
-            var tableAll = <?= $tableString ?>;
-
-            function getLocation(val){
-                val = val.replace(/ /g,"+");
-                var url = `https://maps.googleapis.com/maps/api/geocode/json?address=${val},+CA&key=AIzaSyBpkMug-4w2hYng_XKAEP9v1nOG1Khyu-8`;
-                
-                fetch(url)
-                    .then((resp) => resp.json())
-                    .then(data => {
-                        console.log("Response", data);
-                        var pinColor = '5c359d';
-                        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-                            new google.maps.Size(50, 50),
-                            new google.maps.Point(0,0),
-                            new google.maps.Point(10, 34));
-                        var marker = new google.maps.Marker({
-                            position: {lat: data.results[0].geometry.location['lat'], lng: data.results[0].geometry.location['lng']},
-                            map: map,
-                            icon: pinImage
-                        });
-                    })
-            }
-            
-            function initMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -6.1822265, lng: 106.8014449},
-                zoom: 12
-                });
-            }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpkMug-4w2hYng_XKAEP9v1nOG1Khyu-8&callback=initMap"
-            async defer></script>
-    </div>
-</div>
-
-</body>
-</html>

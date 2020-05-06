@@ -1,0 +1,26 @@
+input origin 
+walking speed = 84 meter/minutes
+input destination
+
+find all halte radius 2 km from origin
+if not found out find top three halte from origin
+ 
+
+Find nearest halte from destination
+
+
+
+
+function searchNighborhoodHalte(halte) {
+
+	for every halto do {
+		search all halte in same trayek with halte
+		evaluate haltes based on distance to
+		select the halte 
+	}
+
+}
+
+function evaluateHalte(halte) {
+	return distance of halte to the nearest halte from destination
+}
