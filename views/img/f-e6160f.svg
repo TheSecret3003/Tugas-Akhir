@@ -1,0 +1,12 @@
+<svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" transform="translate(0 -636)">
+<g id="Icons/Pin-small">
+<g id="Combined Shape">
+<use xlink:href="#path0_fill" transform="translate(3 637)" fill="#999199"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 4.90002C 0 2.198 2.24286 0 5 0C 7.75714 0 10 2.198 10 4.90002C 10 7.97382 6.5021 12.2719 5.35765 13.5959C 5.16657 13.8169 4.83343 13.8169 4.64235 13.5959C 3.4979 12.2719 0 7.97382 0 4.90002ZM 7 5C 7 6.10455 6.10457 7 5 7C 3.89543 7 3 6.10455 3 5C 3 3.89545 3.89543 3 5 3C 6.10457 3 7 3.89545 7 5Z"/>
+</defs>
+</svg>

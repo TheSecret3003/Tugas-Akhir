@@ -1,0 +1,338 @@
+h1 {
+    color: #999199;
+    font-size: 40px;
+    margin-top: 10px ;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #999199;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-flex: 1;
+    flex: 1;
+    -webkit-box-orient: horizontal;
+    flex-direction: row;
+    height: 100vh;
+    background-color: #faf8fa;
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    padding-bottom: 12px;
+    background: #fff;
+    margin-bottom: 0px;
+}
+
+.breadcrumbs-pair {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 4px;
+}
+
+.link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 16px;
+    color: #999199;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline;
+    text-decoration: none;
+}
+
+.search-container {
+    width: 46.5vw;
+    max-width: 480px;
+    margin: 0 auto;
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: flex;
+    -webkit-box-direction: normal;
+    margin-left: 0;
+}
+
+.input-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.input {
+    margin-bottom: 8px;
+    position: relative;
+    font-size: 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: block;
+    padding: 16px;
+    background: rgba(17,7,17,.04);
+    border-radius: 6px;
+}
+
+.input-content {
+    padding-right: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0;
+    -webkit-box-align: center;
+    align-items: center;
+
+}
+
+.input-icon {
+    margin: 0 8px 0 2px;
+}
+
+.input-placeholder {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.icon {
+    display: inline-block;
+    font-size: 0;
+}
+.standard-cell {
+    margin-top: 0px;
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+}
+.image-cell {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 16px 0 16px 16px;
+    align-self: center;
+}
+.content-cell {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    padding: 16px 16px 16px 0;
+    min-width: 0;
+    flex-grow: 1;
+    align-items: center;
+}
+.text-cell {
+    -webkit-box-flex: 1;
+    display: flex;
+    font-size: 16px;
+    line-height: 20px;
+    color: #110711;
+    font-weight: 600;
+    padding-right: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-box-flex: 2;
+    flex: 2;
+}
+
+.body-cell {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    color: #110711;
+    font-weight: 400;
+}
+
+.suffix-cell {
+    font-size: 16px;
+    line-height: 20px;
+    color: #110711;
+    font-weight: 400;
+    display: flex;
+    padding-left: 8px;
+    text-align: right;
+    align-items: center;
+    flex: 0 0 auto;
+}
+.small-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.large-icon {
+    width: 32px;
+    height: 32px;
+}
+.margin-right {
+    margin-right: 12px;
+}
+
+.text-body {
+    font-size: 16px;
+    line-height: 20px;
+    color: #110711;
+    font-weight: 400;
+    font-family: Arial;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.badge-large {
+    min-width: 32px;
+    border-radius: 4px
+}
+
+.badge-margin-right {
+    margin-right: 12px;
+}
+
+.badge-label {
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    color: #fff!important;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 7px 8px 5px;
+}
+
+.input-value {
+    font-size: 16px;
+    line-height: 20px;
+    color: #110711;
+    font-weight: 400;
+    width: 100%;
+    padding: 0;
+    font-family: arial;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    resize: none;
+    -webkit-appearance: none;
+    -webkit-box-flex: 1;
+    flex: 1;
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+}
+
+.transportation {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    margin-top: 16px;
+}
+.flex-scrollable {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex: 1 0 0;
+    overflow: auto;
+    flex-direction: column;
+    will-change: transform;
+}
+.transportation-types {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(17,7,17,.04);
+}
+
+.type {
+    width: calc(50% - 8px);
+    margin: 4px;
+    cursor: pointer;
+}
+
+.card {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    overflow: hidden;
+    font-size: 0;
+    vertical-align: top;
+    border-radius: 4px;
+}
+.card-icon {
+    margin-bottom: 8px;
+}
+
+.c-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+}
+
+.card-label {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    color: #fff;
+    margin-top: auto;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-height: 2rem;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.map-big {
+    flex: 1 0 0;
+    height: 100vh;
+    position: relative;
+    background-color: #e5e3df;
+}
+
+.map-pigeon {
+    position: relative;
+    display: flex;
+    z-index: 0;
+    height: 100%;
+    cursor: default;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.map-control-group {
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px -1px rgba(0,0,0,.3);
+}
+
+.map-control {
+    position: relative;
+    display: flex;
+    padding: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+}
+
+
+

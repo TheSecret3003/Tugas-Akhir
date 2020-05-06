@@ -1,0 +1,2 @@
+SELECT koridor,jenis_trayek,nama_trayek FROM `trayek` WHERE id_kendaraan = 1 ORDER BY id_trayek ASC
+SELECT nama_terminal,jadwal,durasi FROM `terminal` WHERE id_trayek = 1 ORDER BY id_terminal
