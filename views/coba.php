@@ -43,6 +43,13 @@
         }
         return $halteOrigin;
     }
+    $halteOrigin = searchNearestHalte($origin); 
+    $sqlTrayek= "SELECT id_trayek FROM `terminal` WHERE id_halte = $halteOrigin['id_halte']";
+    $resultTrayek = mysqli_query($db, $sqlTrayek);
+    $tableTrayek = array();
+    while ($rowTrayek = $resultTrayek->fetch_assoc()) {
+        array_push($tableTrayeke, $rowTrayek);
+    }
     var_dump(searchNearestHalte($origin));
     // var_dump($result1);
     // var_dump($result2);
